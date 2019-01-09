@@ -8,9 +8,18 @@ class Movie extends Component {
     poster: PropTypes.string
   };
 
+  componentWillMount() {
+    console.log("will mount");
+  }
+
+  componentDidMount() {
+    console.log("did mount");
+  }
+
   render() {
-    console.log("Movie Props================");
-    console.log(this.props);
+    console.log("did render");
+    // console.log("Movie Props================");
+    // console.log(this.props);
 
     return (
       <div>
@@ -28,8 +37,8 @@ class MoviePoster extends Component {
   };
 
   render() {
-    console.log("MoviePoster Props================");
-    console.log(this.props);
+    // console.log("MoviePoster Props================");
+    // console.log(this.props);
     return <img src={this.props.poster} width="300" alt={this.props.title} />;
   }
 }
