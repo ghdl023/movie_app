@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import "./Movie.css";
+import PropTypes from "prop-types";
 
 class Movie extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string
+  };
+
   render() {
     console.log("Movie Props================");
     console.log(this.props);
 
     return (
       <div>
-        <MoviePoster poster={this.props.poster} />
+        <MoviePoster title={this.props.title} poster={this.props.poster} />
         <h1>{this.props.title}</h1>
       </div>
     );
@@ -16,10 +22,15 @@ class Movie extends Component {
 }
 
 class MoviePoster extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired
+  };
+
   render() {
     console.log("MoviePoster Props================");
     console.log(this.props);
-    return <img src={this.props.poster} width="300" />;
+    return <img src={this.props.poster} width="300" alt={this.props.title} />;
   }
 }
 
