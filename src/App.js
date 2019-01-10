@@ -16,9 +16,11 @@ class App extends Component {
     const movies = this.state.movies.map(currentMovie => {
       return (
         <Movie
-          title={currentMovie.title}
-          poster={currentMovie.large_cover_image}
+          title={currentMovie.title_english}
+          poster={currentMovie.medium_cover_image}
           key={currentMovie.id}
+          genres={currentMovie.genres}
+          synopsis={currentMovie.synopsis}
         />
       );
     });
@@ -28,7 +30,6 @@ class App extends Component {
 
   _getMovies = async () => {
     const movies = await this._callApi();
-    console.log(movies);
     this.setState({
       movies
     });
