@@ -9,9 +9,10 @@ class App extends Component {
   state = {};
 
   componentDidMount() {
-    console.log(
-      fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
-    );
+    fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+      .then(potato => potato.json())
+      .then(json => console.log(json))
+      .catch(error => console.log(error));
   }
 
   _renderMovies = () => {
