@@ -8,17 +8,7 @@ class Movie extends Component {
     poster: PropTypes.string
   };
 
-  componentWillMount() {
-    console.log("will mount");
-  }
-
-  componentDidMount() {
-    console.log("did mount");
-  }
-
   render() {
-    console.log("did render");
-
     return (
       <div>
         <MoviePoster title={this.props.title} poster={this.props.poster} />
@@ -46,7 +36,7 @@ const MoviePoster = ({ title, poster }) => {
 };
 
 MoviePoster.propTypes = {
-  title: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired
 };
 
