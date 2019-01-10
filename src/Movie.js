@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LinesEllipsis from "react-lines-ellipsis";
 import "./Movie.css";
 import PropTypes from "prop-types";
 
@@ -9,10 +10,10 @@ const Movie = ({ title, poster, genres, synopsis }) => {
   console.log("******");
   return (
     <div className="Movie">
-      <div className="Movie__Columns">
+      <div className="Movie__Column">
         <MoviePoster title={title} poster={poster} />
       </div>
-      <div className="Movie__Columns">
+      <div className="Movie__Column">
         <h1 className="Movie__Title">{title}</h1>
         <div className="Movie__Genres">
           {genres.map((genre, index) => {
@@ -20,7 +21,17 @@ const Movie = ({ title, poster, genres, synopsis }) => {
             return <MovieGenre genre={genre} key={index} />;
           })}
         </div>
-        <p className="Movie__Synopsis">{synopsis}</p>
+        <div className="Movie__Synopsis">
+          {
+            <LinesEllipsis
+              text={synopsis}
+              maxLine="3"
+              ellipsis="..."
+              trimRight
+              basedOn="letters"
+            />
+          }
+        </div>
       </div>
     </div>
   );
@@ -28,7 +39,7 @@ const Movie = ({ title, poster, genres, synopsis }) => {
 
 // stateless functional component(멍청한 컴포넌트, state가 없는 컴포넌트)
 const MoviePoster = ({ title, poster }) => {
-  return <img src={poster} width="300" alt={title} />;
+  return <img className="Movie__Poster" src={poster} alt={title} />;
 };
 
 const MovieGenre = genre => {
