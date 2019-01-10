@@ -18,8 +18,6 @@ class Movie extends Component {
 
   render() {
     console.log("did render");
-    // console.log("Movie Props================");
-    // console.log(this.props);
 
     return (
       <div>
@@ -29,18 +27,27 @@ class Movie extends Component {
     );
   }
 }
+// 똑똑한 컴포넌트
 
-class MoviePoster extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-  };
+// class MoviePoster extends Component {
+//   static propTypes = {
+//     title: PropTypes.string.isRequired,
+//     poster: PropTypes.string.isRequired
+//   };
 
-  render() {
-    // console.log("MoviePoster Props================");
-    // console.log(this.props);
-    return <img src={this.props.poster} width="300" alt={this.props.title} />;
-  }
-}
+//   render() {
+//     return <img src={this.props.poster} width="300" alt={this.props.title} />;
+//   }
+// }
+
+// stateless functional component(멍청한 컴포넌트)
+const MoviePoster = ({ title, poster }) => {
+  return <img src={poster} width="300" alt={title} />;
+};
+
+MoviePoster.propTypes = {
+  title: PropTypes.number.isRequired,
+  poster: PropTypes.string.isRequired
+};
 
 export default Movie;
